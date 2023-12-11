@@ -1,0 +1,47 @@
+
+.btn {
+    text-decoration: none;
+    padding: 15px;
+    font-family: verdana;
+    font-size: 1.2em;
+    color: #FFFFFF;
+    background-color: #92d050;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+  }
+
+  .btnRed {
+    text-decoration: none;
+    padding: 15px;
+    font-family: verdana;
+    font-size: 1.2em;
+    color: #FFFFFF;
+    background-color: red;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+  }
+
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .etapes {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    width: 80%;
+    padding: 10px;
+  }
+
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+}
