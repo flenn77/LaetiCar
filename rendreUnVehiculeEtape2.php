@@ -63,20 +63,17 @@
     } else {
         $idTrajet = isset($_GET['idTrajet']) ? intval($_GET['idTrajet']) : 0;
 
-        // Effectuer une requête pour obtenir l'immatriculation du véhicule
         $sqlImmatriculation = "SELECT immatriculation FROM vehicule WHERE idVehicule = (SELECT idVehicule FROM trajet WHERE idTrajet = :idTrajet)";
         $stmtImmatriculation = $connexionALaBdD->prepare($sqlImmatriculation);
         $stmtImmatriculation->execute([':idTrajet' => $idTrajet]);
         $resultImmatriculation = $stmtImmatriculation->fetch();
 
-        // Récupérer le kilométrage de départ pour le trajet spécifié
         $requeteKmDepart = "SELECT kilometrageDepart FROM trajet WHERE idTrajet = :idTrajet";
         $stmtKm = $connexionALaBdD->prepare($requeteKmDepart);
         $stmtKm->execute([':idTrajet' => $idTrajet]);
         $trajet = $stmtKm->fetch();
         $kilometrageDepart = $trajet['kilometrageDepart'];
 
-        // Affichage du formulaire si le formulaire n'a pas été soumis
         ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?idTrajet=<?php echo $idTrajet; ?>" method="post" onsubmit="return validerFormulaire()">
@@ -84,11 +81,9 @@
             <input type="hidden" name="idTrajet" value="<?php echo $idTrajet; ?>">
 
             <?php
-            // Vérifier si le champ d'immatriculation est vide (vélo)
             if (empty($resultImmatriculation['immatriculation'])) {
                 echo '<input type="hidden" name="kilometrageRetour" value="1">';
             } else {
-                // Si ce n'est pas un vélo, afficher le champ de kilométrage de retour
                 echo '<label for="kilometrageRetour">Kilométrage de retour:</label>';
                 echo '<input type="number" name="kilometrageRetour" id="kilometrageRetour" required><br><br>';
             }

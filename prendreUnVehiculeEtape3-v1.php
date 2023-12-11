@@ -29,14 +29,11 @@
             <?php
 include 'db.php';
 
-// Récupération des valeurs idPersonne et idVehicule de l'URL
 $idPersonne = isset($_GET['idPersonne']) ? intval($_GET['idPersonne']) : 0;
 $idVehicule = isset($_GET['idVehicule']) ? intval($_GET['idVehicule']) : 0;
-$traitementEffectue = false; // Variable pour vérifier si le formulaire a été traité
 
-// Vérifier si le formulaire a été soumis
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupération des données du formulaire en utilisant l'opérateur ternaire pour chaque champ
     if (empty($_POST['nature'])) {
         echo "Le champ Nature est obligatoire.";
     } else {
@@ -67,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $destination = $_POST['destination'];
     }
 
-    // Définir la valeur par défaut à 0 pour le champ kilometrageDepart
+
     $kilometrageDepart = 0;
 
     $sql = "INSERT INTO trajet (nature, dateDepart, heureDepart, lieuDepart, destination, kilometrageDepart, dateArrivee, heureArrivee, idPersonne, idVehicule) 
@@ -81,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ':heureDepart' => $heureDepart,
         ':lieuDepart' => $lieuDepart,
         ':destination' => $destination,
-        ':kilometrageDepart' => $_POST['kilometrageDepart'], // Utiliser la valeur saisie dans le formulaire
+        ':kilometrageDepart' => $_POST['kilometrageDepart'],
         ':dateArrivee' => $_POST['dateArrivee'],
         ':heureArrivee' => $_POST['heureArrivee'],
         ':idPersonne' => $idPersonne,
@@ -91,8 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<br><br><div class='success-container'><br><br>";
         echo "<h1 class='success-message'>Trajet enregistré avec succès</h1>";
         echo "<br><br></div><br><br>";
-        echo "<a href='gestionVehicule.html' class='lien-styliseBack'>Retour à l'accueil</a>"; // Remplacez 'index.php' par le chemin de votre page d'accueil
-        $traitementEffectue = true; // Indique que le traitement a été effectué
+        echo "<a href='gestionVehicule.html' class='lien-styliseBack'>Retour à l'accueil</a>"; 
+        $traitementEffectue = true; 
     } else {
         echo "<p class='error-message'>Erreur lors de l'enregistrement: " . htmlspecialchars($stmt->errorInfo()[2]) . "</p>";
     }
@@ -122,13 +119,11 @@ if (!$traitementEffectue):
             <input type="text" id="destination" name="destination" required><br><br>
 
             <?php
-    // Effectuer une requête pour obtenir l'immatriculation du véhicule
     $sqlImmatriculation = "SELECT immatriculation FROM vehicule WHERE idVehicule = :idVehicule";
     $stmtImmatriculation = $connexionALaBdD->prepare($sqlImmatriculation);
     $stmtImmatriculation->execute([':idVehicule' => $idVehicule]);
     $resultImmatriculation = $stmtImmatriculation->fetch();
 
-    // Vérifier si le champ d'immatriculation est vide (vélo)
     if (empty($resultImmatriculation['immatriculation'])) {
         echo '<input type="hidden" name="kilometrageDepart" value="0">';
     } else {
@@ -155,8 +150,6 @@ if (!$traitementEffectue):
 
     <script type="text/javascript">
     function testerSaisie() {
-        // Vous pouvez ajouter ici les validations JavaScript si nécessaire
-        // Par exemple, vérifier si le kilométrage de départ est inférieur au kilométrage de retour
         var kilometrageDepart = document.forms["enregistrerDonnees"]["kilometrageDepart"].value;
         var kilometrageArrivee = document.forms["enregistrerDonnees"]["kilometrageArrivee"].value;
 
