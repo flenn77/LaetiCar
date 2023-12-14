@@ -28,7 +28,7 @@
         <p>
             <?php
 include 'db.php';
-
+$traitementEffectue = false; 
 $idPersonne = isset($_GET['idPersonne']) ? intval($_GET['idPersonne']) : 0;
 $idVehicule = isset($_GET['idVehicule']) ? intval($_GET['idVehicule']) : 0;
 
@@ -92,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $traitementEffectue = true; 
     } else {
         echo "<p class='error-message'>Erreur lors de l'enregistrement: " . htmlspecialchars($stmt->errorInfo()[2]) . "</p>";
+        
     }
 
     $stmt->closeCursor();
