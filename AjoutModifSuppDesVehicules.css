@@ -1,4 +1,3 @@
-
 .error-card {
     text-align: center;
     background-color: #ff0000;
@@ -7,7 +6,6 @@
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 24px;
-
 }
 
 .success-alert {
@@ -19,7 +17,6 @@
     font-size: 24px;
     text-align: center;
 }
-
 
 body {
     margin: auto;
@@ -62,8 +59,21 @@ form {
     align-items: center;
 }
 
-label,
 input {
+    margin: 5px 0;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    margin: 5px 0;
+}
+
+input:focus {
+    border-color: #007bff;
+}
+
+label {
     margin: 5px 0;
 }
 
@@ -103,7 +113,6 @@ table {
 
 th,
 td {
-
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
@@ -113,11 +122,8 @@ th {
     background-color: #f2f2f2;
 }
 
-
-
 .delete-button {
     background-color: red;
-
     color: white;
     border: none;
     padding: 5px 10px;
@@ -130,7 +136,6 @@ th {
     background-color: darkred;
     transform: scale(1.1);
 }
-
 
 .blue-button {
     background-color: blue;
@@ -157,23 +162,18 @@ th {
     0% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }
 }
 
-
-
 @keyframes gradient {
     0% {
         background-position: 0% 0%;
     }
-
     50% {
         background-position: 100% 100%;
     }
-
     100% {
         background-position: 0% 0%;
     }
@@ -209,30 +209,23 @@ th {
     2% {
         transform: translateX(1);
     }
-
     25% {
         transform: translateX(-25%);
     }
-
     50% {
         transform: translateX(-50%);
     }
-
     75% {
         transform: translateX(-25%);
     }
-
     100% {
         transform: translateX(1);
     }
 }
 
 
-
-
-
-
 /* Style pour le bouton "X" de fermeture de l'alerte */
+
 .close-button {
     background-color: transparent;
     /* Couleur de fond transparente */
@@ -251,11 +244,6 @@ th {
     margin-top: -10px;
     /* Ajustement de la position */
 }
-
-
-
-
-
 
 .button {
     display: inline-block;
@@ -306,14 +294,9 @@ th {
     right: 0;
 }
 
-
 .animate-charcter {
     text-transform: uppercase;
-    background-image: linear-gradient(-225deg,
-            #231557 0%,
-            #44107a 29%,
-            #ff1361 67%,
-            #fff800 100%);
+    background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
     background-size: auto auto;
     background-clip: border-box;
     background-size: 50% auto;
@@ -337,41 +320,74 @@ th {
     }
 }
 
-
 ::placeholder {
     color: #A79696;
     font-size: 1em;
 }
 
-
-lien-stylise:link, .lien-stylise:visited,
-.lien-styliseNav:link, .lien-styliseNav:visited,
-.lien-styliseBack:link, .lien-styliseBack:visited {
-padding: 4px 15px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-border-radius: 5px;
-transition: background-color 0.3s;
+lien-stylise:link,
+.lien-stylise:visited,
+.lien-styliseNav:link,
+.lien-styliseNav:visited,
+.lien-styliseBack:link,
+.lien-styliseBack:visited {
+    padding: 4px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.lien-stylise:link, .lien-stylise:visited {
-background-color: #17A2B8;
-color: white;
+.lien-stylise:link,
+.lien-stylise:visited {
+    background-color: #17A2B8;
+    color: white;
 }
 
-.lien-styliseNav:link, .lien-styliseNav:visited {
-background-color: #59A9FF;
-color: white;
+.lien-styliseNav:link,
+.lien-styliseNav:visited {
+    background-color: #59A9FF;
+    color: white;
 }
 
-.lien-styliseBack:link, .lien-styliseBack:visited {
-background-color: #c82333;
-color: white;
+.lien-styliseBack:link,
+.lien-styliseBack:visited {
+    background-color: #c82333;
+    color: white;
 }
 
-.lien-stylise:hover, .lien-stylise:active,
-.lien-styliseNav:hover, .lien-styliseNav:active,
-.lien-styliseBack:hover, .lien-styliseBack:active {
-background-color: grey;
+.lien-stylise:hover,
+.lien-stylise:active,
+.lien-styliseNav:hover,
+.lien-styliseNav:active,
+.lien-styliseBack:hover,
+.lien-styliseBack:active {
+    background-color: grey;
+}
+
+
+/* Style pour le conteneur des boutons radio */
+
+.custom-radio-container {
+    display: flex;
+    /* Afficher les enfants en ligne */
+    align-items: left;
+    /* Aligner verticalement au centre */
+}
+
+
+/* Style pour les boutons radio */
+
+.custom-radio {
+    margin-right: 5px;
+    /* Espacement entre les boutons radio */
+}
+
+
+/* Style pour les labels des boutons radio */
+
+.custom-radio-label {
+    margin-right: 10px;
+    /* Espacement entre les labels */
 }

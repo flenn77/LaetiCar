@@ -123,10 +123,33 @@ if (isset($_GET['delete'])) {
         });
 
     </script>
+<style>
+        /* Add your CSS styles for this page here */
+        .error-card {
+    background-color: #ffcccc;
+    /* Couleur de fond pour les messages d'erreur */
+    color: #ff0000;
+    /* Couleur du texte pour les messages d'erreur */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: none;
+    /* Masquer initialement l'alerte */
+}
 
-
+.success-alert {
+    background-color: #ccffcc;
+    /* Couleur de fond pour les messages de succès */
+    color: #009900;
+    /* Couleur du texte pour les messages de succès */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: none;
+    /* Masquer initialement l'alerte */
+}
+    </style>
 </head>
-
 <body>
 
     <div>
@@ -143,7 +166,9 @@ if (isset($_GET['delete'])) {
             <br>
             <a class="lien-styliseNav" href="gestionVehicule.html">Accueil</a>
             <a class="lien-styliseNav" href="prendreUnVehiculeEtape1.php">Prendre un véhicule</a>
-            <a class="lien-styliseNav" href="rendreUnVehiculeEtape1.php">Rendre un véhicule</a><br><br><br>
+            <a class="lien-styliseNav" href="rendreUnVehiculeEtape1.php">Rendre un véhicule</a>
+            <a class="lien-styliseNav" href="AjoutModifSuppDesIndividus.php">Gérer les Individus</a>
+            <a class="lien-styliseNav" href="AjoutModifSuppDesVehicules.php">Gérer les Véhicules</a><br><br><br>
 
             <h3 class="animate-charcter"> Ajouter un véhicule</h3>
         </center>
