@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    color: #333; /* Couleur du texte modifiée pour une meilleure lisibilité */
+    color: #333;
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ body {
 .personne {
     background-color: #f2f2f2;
     color: black;
-    margin: 0 auto 10px; /* Centrage horizontal et marge de 10px en bas */
+    margin: 0 auto 10px;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -62,9 +62,12 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 
-.lien-stylise:link, .lien-stylise:visited,
-.lien-styliseNav:link, .lien-styliseNav:visited,
-.lien-styliseBack:link, .lien-styliseBack:visited {
+.lien-stylise:link,
+.lien-stylise:visited,
+.lien-styliseNav:link,
+.lien-styliseNav:visited,
+.lien-styliseBack:link,
+.lien-styliseBack:visited {
     padding: 4px 15px;
     text-align: center;
     text-decoration: none;
@@ -73,46 +76,50 @@ input[type="submit"]:hover {
     transition: background-color 0.3s;
 }
 
-.lien-stylise:link, .lien-stylise:visited {
+.lien-stylise:link,
+.lien-stylise:visited {
     background-color: #17A2B8;
     color: white;
 }
 
-.lien-styliseNav:link, .lien-styliseNav:visited {
+.lien-styliseNav:link,
+.lien-styliseNav:visited {
     background-color: #59A9FF;
     color: white;
 }
 
-.lien-styliseBack:link, .lien-styliseBack:visited {
+.lien-styliseBack:link,
+.lien-styliseBack:visited {
     background-color: #c82333;
     color: white;
 }
 
-.lien-stylise:hover, .lien-stylise:active,
-.lien-styliseNav:hover, .lien-styliseNav:active,
-.lien-styliseBack:hover, .lien-styliseBack:active {
+.lien-stylise:hover,
+.lien-stylise:active,
+.lien-styliseNav:hover,
+.lien-styliseNav:active,
+.lien-styliseBack:hover,
+.lien-styliseBack:active {
     background-color: grey;
 }
 
 .success-container {
-    background-color: #d4edda; /* Vert clair */
-    color: #155724; /* Vert foncé pour le texte */
+    background-color: #d4edda;
+    color: #155724;
     border: 1px solid #c3e6cb;
     border-radius: 5px;
     padding: 10px 20px;
-    margin: 20px auto; /* Marge sur le haut, le bas et centré horizontalement */
-    font-size: 1.2em; /* Taille de texte légèrement augmentée */
+    margin: 20px auto;
+    font-size: 1.2em;
     text-align: center;
-    max-width: 80%; /* Limiter la largeur maximale */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Optionnel : ajoute une légère ombre pour un effet de profondeur */
+    max-width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 
 .fade-in {
     opacity: 0;
     transition: opacity 2s ease-in;
 }
-
 
 .animated-border {
     border: 2px solid transparent;
@@ -120,5 +127,5 @@ input[type="submit"]:hover {
 }
 
 .animated-border.clicked {
-    border-color: #3498db; /* Changez cette couleur selon vos préférences */
+    border-color: #3498db;
 }

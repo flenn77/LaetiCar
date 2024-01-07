@@ -17,13 +17,18 @@
   <center>
   <img src="logo_fac.png" alt="Description" class="fade-in" height="150px" width="300px"></center>
   <h1>Rendre un Véhicule</h1>
-  
+  <br>
+    <a class="lien-styliseNav" href="gestionVehicule.html">Accueil</a>
+    <a class="lien-styliseNav" href="prendreUnVehiculeEtape1.php">Prendre un véhicule</a>
+    <a class="lien-styliseNav" href="rendreUnVehiculeEtape1.php">Rendre un véhicule</a>
+    <a class="lien-styliseNav" href="AjoutModifSuppDesIndividus.php">Gérer les Individus</a>
+    <a class="lien-styliseNav" href="AjoutModifSuppDesVehicules.php">Gérer les Véhicules</a><br><br><br>
+
+    <br><br>
   <?php
-      // Connexion à la base de données
       include 'db.php';
       
 
-      // Requête pour récupérer les véhicules actuellement utilisés
       $requete = "SELECT t.idTrajet, p.nom, p.prenom, v.marque, v.type, v.immatriculation 
             FROM trajet t
             JOIN personne p ON t.idPersonne = p.idPersonne
@@ -33,7 +38,6 @@
 
       $reponse = $connexionALaBdD->query($requete);
 
-      // Affichage des résultats
       while ($ligne = $reponse->fetch()) {
         echo "<div class='vehicule-info'>";
         echo "<strong>Nom Prénom :</strong> " . htmlspecialchars($ligne['nom']) .' '. htmlspecialchars($ligne['prenom']) . "<br>";  

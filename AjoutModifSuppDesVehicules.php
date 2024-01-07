@@ -7,7 +7,6 @@ if (isset($_POST['ajouter'])) {
 
     include('db.php');
 
-    // Vérification si l'immatriculation existe déjà
     $sqlCheck = "SELECT COUNT(*) FROM vehicule WHERE immatriculation = :immatriculation";
     $stmtCheck = $connexionALaBdD->prepare($sqlCheck);
     $stmtCheck->bindParam(':immatriculation', $immatriculation);
@@ -15,18 +14,15 @@ if (isset($_POST['ajouter'])) {
     $rowCount = $stmtCheck->fetchColumn();
 
     if ($rowCount > 0) {
-        // L'immatriculation existe déjà, afficher un message d'erreur
         echo "<div class='error-card'>
                 L'immatriculation existe déjà. 
               </div>";
-        // Vous pouvez également ajouter un peu de JavaScript pour masquer l'alerte après un certain temps
         echo "<script>
             setTimeout(function() {
                 document.querySelector('.error-card').style.display = 'none';
             }, 4000); // Disparaît après 3 secondes
           </script>";
     } else {
-        // L'immatriculation est unique, insérer le véhicule
         $sqlInsert = "INSERT INTO vehicule (immatriculation, marque, type) VALUES (:immatriculation, :marque, :type)";
         $stmtInsert = $connexionALaBdD->prepare($sqlInsert);
         $stmtInsert->bindParam(':immatriculation', $immatriculation);
@@ -34,23 +30,19 @@ if (isset($_POST['ajouter'])) {
         $stmtInsert->bindParam(':type', $type);
 
         if ($stmtInsert->execute()) {
-            // Afficher un message de succès
             echo "<div class='success-alert'>
                     Le véhicule a été ajouté avec succès. 
                   </div>";
-            // Vous pouvez également ajouter un peu de JavaScript pour masquer l'alerte après un certain temps
             echo "<script>
             setTimeout(function() {
                 document.querySelector('.success-alert').style.display = 'none';
             }, 3000); // Disparaît après 3 secondes
           </script>";
         } else {
-            // Afficher un message d'erreur en cas d'échec de l'insertion
             $errorInfo = $stmtInsert->errorInfo();
             echo "<div class='error-card'>
                     Erreur lors de l'ajout du véhicule : " . $errorInfo[2] . "
                   </div>";
-            // Vous pouvez également ajouter un peu de JavaScript pour masquer l'alerte après un certain temps
             echo "<script>
             setTimeout(function() {
                 document.querySelector('.error-card').style.display = 'none';
@@ -64,9 +56,8 @@ if (isset($_POST['ajouter'])) {
 
 if (isset($_GET['delete'])) {
     $idVehicule = $_GET['delete'];
-    include('db.php'); // Inclure le fichier db.php pour établir la connexion à la base de données
+    include('db.php'); 
 
-    // Vérifier d'abord s'il existe des enregistrements liés dans la table "trajet"
     $sqlCheckTrajets = "SELECT COUNT(*) FROM trajet WHERE idVehicule = :idVehicule";
     $stmtCheckTrajets = $connexionALaBdD->prepare($sqlCheckTrajets);
     $stmtCheckTrajets->bindParam(':idVehicule', $idVehicule);
@@ -74,28 +65,23 @@ if (isset($_GET['delete'])) {
     $rowCount = $stmtCheckTrajets->fetchColumn();
 
     if ($rowCount > 0) {
-        // Il existe des enregistrements liés dans la table "trajet", afficher un message d'erreur dans une carte rouge
         echo "<div class='error-card'> ";
         echo "Impossible de supprimer ce véhicule car il est déjà utilisé dans un trajet.";
         echo "</div>";
-        // Vous pouvez également ajouter un peu de JavaScript pour masquer l'alerte après un certain temps
         echo "<script>
                     setTimeout(function() {
                         document.querySelector('.error-card').style.display = 'none';
                     }, 4000); // Disparaît après 3 secondes
                   </script>";
     } else {
-        // Aucun enregistrement lié, vous pouvez supprimer le véhicule
         $sqlDeleteVehicule = "DELETE FROM vehicule WHERE idVehicule = :idVehicule";
         $stmtDeleteVehicule = $connexionALaBdD->prepare($sqlDeleteVehicule);
         $stmtDeleteVehicule->bindParam(':idVehicule', $idVehicule);
 
         if ($stmtDeleteVehicule->execute()) {
-            // Véhicule supprimé avec succès, afficher une alerte verte
             echo "<div class='success-alert' >";
             echo "Le véhicule a été supprimé avec succès.";
             echo "</div>";
-            // Vous pouvez également ajouter un peu de JavaScript pour masquer l'alerte après un certain temps
             echo "<script>
                     setTimeout(function() {
                         document.querySelector('.success-alert').style.display = 'none';
@@ -116,7 +102,7 @@ if (isset($_GET['delete'])) {
 <head>
     <meta charset="utf-8">
     <title>Prise en charge d'un véhicule</title>
-    <link href="AjoutModifSuppDesVehicules.css" rel="stylesheet" />
+    <link href="Gestion.css" rel="stylesheet" />
     <script>
         window.addEventListener('load', function () {
             document.querySelector('.fade-in').style.opacity = 1;
@@ -124,39 +110,12 @@ if (isset($_GET['delete'])) {
 
     </script>
 <style>
-        /* Add your CSS styles for this page here */
-        .error-card {
-    background-color: #ffcccc;
-    /* Couleur de fond pour les messages d'erreur */
-    color: #ff0000;
-    /* Couleur du texte pour les messages d'erreur */
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    display: none;
-    /* Masquer initialement l'alerte */
-}
 
-.success-alert {
-    background-color: #ccffcc;
-    /* Couleur de fond pour les messages de succès */
-    color: #009900;
-    /* Couleur du texte pour les messages de succès */
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    display: none;
-    /* Masquer initialement l'alerte */
-}
     </style>
 </head>
 <body>
 
-    <div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
+
     <div class="container">
 
         <center>
@@ -170,7 +129,7 @@ if (isset($_GET['delete'])) {
             <a class="lien-styliseNav" href="AjoutModifSuppDesIndividus.php">Gérer les Individus</a>
             <a class="lien-styliseNav" href="AjoutModifSuppDesVehicules.php">Gérer les Véhicules</a><br><br><br>
 
-            <h3 class="animate-charcter"> Ajouter un véhicule</h3>
+            <h3> Ajouter un véhicule</h3>
         </center>
         <br><br>
 
@@ -186,7 +145,7 @@ if (isset($_GET['delete'])) {
         <br>
         <hr><br><br>
         <center>
-            <h2 class="animate-charcter">Liste des véhicules</h2>
+            <h2>Liste des véhicules</h2>
         </center>
         <table>
             <tr>

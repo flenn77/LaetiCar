@@ -29,6 +29,11 @@
         <img src="logo_fac.png" alt="Description" class="fade-in" height="150px" width="300px">
     </center>
     <h1>Formulaire de Retour de Véhicule</h1>
+    <a class="lien-styliseNav" href="gestionVehicule.html">Accueil</a>
+    <a class="lien-styliseNav" href="prendreUnVehiculeEtape1.php">Prendre un véhicule</a>
+    <a class="lien-styliseNav" href="rendreUnVehiculeEtape1.php">Rendre un véhicule</a>
+    <a class="lien-styliseNav" href="AjoutModifSuppDesIndividus.php">Gérer les Individus</a>
+    <a class="lien-styliseNav" href="AjoutModifSuppDesVehicules.php">Gérer les Véhicules</a><br><br><br>
 
     <?php
     include 'db.php';
